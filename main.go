@@ -26,7 +26,8 @@ func main() {
 	api.SetLogger(log)
 
 	stream := api.PublicStreamFilter(url.Values{
-		"track": []string{"vancouver"},
+		"track":    []string{"vancouver"},
+		"location": []string{"49.246292, -123.116226."},
 	})
 
 	defer stream.Stop()
@@ -38,7 +39,17 @@ func main() {
 			continue
 		}
 
-		log.Infof("%s\n", t.Text)
+		tweetDesc := t.Text
+		tweetCount := t.RetweetCount
+		tweetAuthor := t.User.ScreenName
+
+		if t.RetweetedStatus != nil {
+			tweetDesc = t.RetweetedStatus.Text
+			tweetCount = t.RetweetedStatus.RetweetCount
+			tweetAuthor = t.RetweetedStatus.User.ScreenName
+		}
+
+		log.Infof("(@%s) - %s - %d \n", tweetAuthor, tweetDesc, tweetCount)
 	}
 
 	fmt.Println("Build Works")
