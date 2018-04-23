@@ -9,11 +9,6 @@ import (
 	"github.com/spf13/viper"
 )
 
-type Trend struct {
-	anaconda.Trend
-	TweetVolume string `json:"tweet_volume"`
-}
-
 var api *anaconda.TwitterApi
 var log = &logger{logrus.New()}
 
