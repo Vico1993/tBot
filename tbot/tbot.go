@@ -39,13 +39,13 @@ func GetSpecificStream(keyword string) {
 }
 
 // GetTopTrends for a specific location
-func GetTopTrends() {
-
+func GetTopTrends(lat float64, long float64) {
 	// Get WHOEID from yahoo of a specific location
-	location, err := api.GetTrendsClosestLocations(49.246292, -123.116226, url.Values{})
+	location, err := api.GetTrendsClosestLocations(lat, long, url.Values{})
 	if err != nil || len(location) > 1 || len(location) <= 0 {
 		panic(fmt.Errorf("Error receiving the Location: %s", err))
 	}
+
 	woeid := location[0].Woeid
 
 	// Get Trends for this location
@@ -55,7 +55,10 @@ func GetTopTrends() {
 	}
 
 	for _, t := range trendResponses.Trends {
-		log.Infof("%s \n", t.Name)
+		if t.PromotedContent != "" {
+			continue
+		}
+		log.Info(t.Name + " - " + t.Url)
 	}
 }
 
