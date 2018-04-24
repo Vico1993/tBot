@@ -2,11 +2,14 @@
 
 The purpose is to enter a location.. and it will find every thing very cool near from you.. Every TOP Tweet.
 
+Sorry if you are here.. this TODO List it's for myself, but if you have any idea please, send me help :) 
+
 # TODO 
-    - tbot librairy : 
-        - GetTrends * Display the top of hastag from a location
-        - GetSpecifique stream * Display stream from a specifique stream ( hastag / keyword )
-    - Read the complete documentation from Trends.. How it works.. 
-    - Check trends every 5 minutes / 10 minutes ? 
+    - Build best commandes to be called with a cron ? or a telegram message ? 
+    - Build beautiful output ? 
+    - Add option to set a specific location ( lat / long )
+    - Maybe add a Config file to set Location ? ( hum... )
     - Neet to specitifed the out put.. ( Telegram / Messenger / SMS / Cli ( default - log ) )
     
+# MEMO 
+    - Trends is refresh every 5 minutes.
