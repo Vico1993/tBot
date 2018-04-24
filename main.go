@@ -3,13 +3,12 @@ package main
 import (
 	"fmt"
 
-	"github.com/Vico1993/tbot/tbot"
+	"github.com/Vico1993/tbot/cmd"
 )
 
 func main() {
 
-	// VANCOUVER AREA
-	tbot.GetTopTrends(49.246292, -123.116226)
+	cmd.Execute()
 
 	fmt.Println("Build Works")
 }

@@ -31,6 +31,31 @@ func init() {
 // GetSpecificStream return a direct stream from a specifique element.
 func GetSpecificStream(keyword string) {
 
+	stream := api.PublicStreamFilter(url.Values{
+		"track": []string{keyword},
+	})
+
+	defer stream.Stop()
+
+	for v := range stream.C {
+		t, ok := v.(anaconda.Tweet)
+		if !ok {
+			log.Errorf("Receive unexpected value of type %T", v)
+			continue
+		}
+
+		tweetDesc := t.Text
+		tweetCount := t.RetweetCount
+		tweetAuthor := t.User.ScreenName
+
+		if t.RetweetedStatus != nil {
+			tweetDesc = t.RetweetedStatus.Text
+			tweetCount = t.RetweetedStatus.RetweetCount
+			tweetAuthor = t.RetweetedStatus.User.ScreenName
+		}
+
+		log.Infof("(@%s) - %s - %d \n", tweetAuthor, tweetDesc, tweetCount)
+	}
 }
 
 // GetTopTrends for a specific location
