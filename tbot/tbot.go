@@ -14,8 +14,8 @@ var log = &logger{logrus.New()}
 
 func init() {
 	// Let's configuration about twitter
-	viper.SetConfigName("config")
-	viper.AddConfigPath(".")
+	viper.SetConfigName("tbot.config")
+	viper.AddConfigPath("$HOME/")
 	err := viper.ReadInConfig()
 	if err != nil {
 		panic(fmt.Errorf("Fatal error config file: %s", err))
@@ -25,7 +25,6 @@ func init() {
 	anaconda.SetConsumerSecret(viper.GetString("twitter.consumerSecret"))
 	api = anaconda.NewTwitterApi(viper.GetString("twitter.accessToken"), viper.GetString("twitter.accessTokenSecret"))
 	api.SetLogger(log)
-
 }
 
 // GetSpecificStream return a direct stream from a specifique element.

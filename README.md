@@ -5,6 +5,8 @@ The purpose is to enter a location.. and it will find every thing very cool near
 Sorry if you are here.. this TODO List it's for myself, but if you have any idea please, send me help :) 
 
 # TODO 
+    - Need to handle configuration FILE FIRST 
+        - Need to create the config file with the user if not set.. easy ?
     - Build best commandes to be called with a cron ? or a telegram message ? 
     - Build beautiful output ? 
     - Add option to set a specific location ( lat / long )
