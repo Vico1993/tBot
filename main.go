@@ -1,14 +1,11 @@
 package main
 
-import (
-	"fmt"
-
-	"github.com/Vico1993/tbot/cmd"
-)
+import "github.com/Vico1993/tbot/tbot"
 
 func main() {
 
-	cmd.Execute()
+	tbot.StartConfig()
 
-	fmt.Println("Build Works")
+	// cmd.Execute()
+	// fmt.Println("Build Works")
 }
